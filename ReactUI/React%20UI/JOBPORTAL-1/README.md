@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setting up Dummy DB
+Globally install json-server:
+### `npm i -g json-server` 
+and run it 
+### `npm run dummy-db`
+
 ## Available Scripts
 
 In the project directory, you can run:
