@@ -4,11 +4,7 @@ package com.example.JobApp;
 import com.example.JobApp.model.JobPost;
 import com.example.JobApp.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +20,14 @@ public class JobRestController {
         return service.getAllJobs();
     }
 
-    @GetMapping("jobPosts/{postId}")
+    @GetMapping("jobPost/{postId}")
     public JobPost getJobPost(@PathVariable("postId") int postId){
         return service.getJob(postId);
+    }
+
+    @PostMapping("/jobPost")
+    public JobPost addJobPost(@RequestBody JobPost jobPost) {//here frontend returns JSON, but we need to convert that to JobPost object, so we use @RequestBody
+        service.addJob(jobPost);
+        return service.getJob(jobPost.getPostId());// here we should return with getjob as a proof that the jobpost was successfully added to the DB
     }
 }
