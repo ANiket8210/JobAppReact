@@ -38,7 +38,7 @@ public class JobRestController {
     }
 
     @DeleteMapping("/jobPost")
-    public boolean deleteJobPost(int postId) {
+    public boolean deleteJobPost(@RequestParam("postId") int postId) {
         return service.deleteJobPost(postId);
     }
 }
