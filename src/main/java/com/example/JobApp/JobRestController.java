@@ -30,4 +30,15 @@ public class JobRestController {
         service.addJob(jobPost);
         return service.getJob(jobPost.getPostId());// here we should return with getjob as a proof that the jobpost was successfully added to the DB
     }
+
+    @PutMapping("/jobPost")
+    public JobPost updateJobPost(@RequestBody JobPost jobPost) {
+        service.updateJob(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+
+    @DeleteMapping("/jobPost")
+    public boolean deleteJobPost(int postId) {
+        return service.deleteJobPost(postId);
+    }
 }
