@@ -41,4 +41,9 @@ public class JobRestController {
     public boolean deleteJobPost(@RequestParam("postId") int postId) {
         return service.deleteJobPost(postId);
     }
+
+    @GetMapping("/load")
+    public boolean load(){
+        return service.load();
+    }
 }
