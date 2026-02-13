@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface JobRepo extends JpaRepository<JobPost,Integer> {
 
+    public List<JobPost> getJobPostsByPostProfileLike(String name);
+
 /*
     private List<JobPost> jobs = new ArrayList<>(Arrays.asList(
 

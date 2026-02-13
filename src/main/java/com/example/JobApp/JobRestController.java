@@ -46,4 +46,9 @@ public class JobRestController {
     public boolean load(){
         return service.load();
     }
+
+    @GetMapping("/jobPostProfileLike")
+    public List<JobPost> getJobPostLikeName(@RequestParam("name") String name){
+        return service.getJobPostProfileLike(name);
+    }
 }

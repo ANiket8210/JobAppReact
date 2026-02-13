@@ -56,4 +56,8 @@ public class JobService {
         repo.saveAll(jobs);
         return  jobs.stream().allMatch((job)->repo.existsById(job.getPostId()));
     }
+
+    public List<JobPost> getJobPostProfileLike(String name) {
+        return repo.getJobPostsByPostProfileLike(name);
+    }
 }
