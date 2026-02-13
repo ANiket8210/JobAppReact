@@ -60,4 +60,8 @@ public class JobService {
     public List<JobPost> getJobPostProfileLike(String name) {
         return repo.getJobPostsByPostProfileLike(name);
     }
+
+    public List<JobPost> findallByPostTechStack(List<String> postTechStack) {
+        return repo.findAllByPostTechStack(postTechStack).orElse(new ArrayList<>());
+    }
 }

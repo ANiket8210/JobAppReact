@@ -7,11 +7,14 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface JobRepo extends JpaRepository<JobPost,Integer> {
 
     public List<JobPost> getJobPostsByPostProfileLike(String name);
+
+    public Optional<List<JobPost>> findAllByPostTechStack(List<String> postTechStack);
 
 /*
     private List<JobPost> jobs = new ArrayList<>(Arrays.asList(

@@ -51,4 +51,9 @@ public class JobRestController {
     public List<JobPost> getJobPostLikeName(@RequestParam("name") String name){
         return service.getJobPostProfileLike(name);
     }
+
+    @PostMapping("/JobPostsByTechStack")
+    public List<JobPost> findAllJobPostsByTechStack(@RequestBody List<String> techStack){
+        return service.findallByPostTechStack(techStack);
+    }
 }
