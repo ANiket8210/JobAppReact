@@ -4,6 +4,7 @@ package com.example.JobApp;
 import com.example.JobApp.model.JobPost;
 import com.example.JobApp.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,12 +26,14 @@ public class JobRestController {
         return service.getJob(postId);
     }
 
+    @PreAuthorize("hasAuthority('RECRUITER')")
     @PostMapping("/jobPost")
     public JobPost addJobPost(@RequestBody JobPost jobPost) {//here frontend returns JSON, but we need to convert that to JobPost object, so we use @RequestBody
         service.addJob(jobPost);
         return service.getJob(jobPost.getPostId());// here we should return with getjob as a proof that the jobpost was successfully added to the DB
     }
 
+    @PreAuthorize("hasAuthority('RECRUITER')")
     @PutMapping("/jobPost")
     public JobPost updateJobPost(@RequestBody JobPost jobPost) {
         service.updateJob(jobPost);
